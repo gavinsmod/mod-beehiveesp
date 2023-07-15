@@ -37,10 +37,6 @@ class ModBeehiveEsp : EspMod(
     "beehiveesp"
 ), BlockEntityRenderListener {
     init {
-//        val colorSetting = ColorSetting(
-//            "gavinsmod.settings.esp.beehive.color",
-//            espConfig.beehiveColor
-//        )
         val colorSetting = SettingBuilder()
             .setTitle("gavinsmod.settings.esp.beehive.color")
             .setColor(espConfig.beehiveColor)
