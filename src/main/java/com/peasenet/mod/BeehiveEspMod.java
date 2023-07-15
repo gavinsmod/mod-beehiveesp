@@ -1,7 +1,6 @@
 package com.peasenet.mod;
 
 import com.peasenet.main.GavinsMod;
-import com.peasenet.mod.misc.ModExample;
 import com.peasenet.mods.esp.ModBeehiveEsp;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
