@@ -19,6 +19,8 @@
  */
 package com.peasenet.mods.esp
 
+import com.peasenet.main.Settings
+import com.peasenet.config.EspConfig
 import com.peasenet.settings.SettingBuilder
 import com.peasenet.util.RenderUtils
 import com.peasenet.util.event.data.BlockEntityRender
@@ -39,9 +41,9 @@ class ModBeehiveEsp : EspMod(
     init {
         val colorSetting = SettingBuilder()
             .setTitle("gavinsmod.settings.esp.beehive.color")
-            .setColor(espConfig.beehiveColor)
+            .setColor(config.beehiveColor)
             .buildColorSetting()
-        colorSetting.setCallback { espConfig.beehiveColor = colorSetting.color }
+        colorSetting.setCallback { config.beehiveColor = colorSetting.color }
         addSetting(colorSetting)
     }
 
@@ -58,6 +60,12 @@ class ModBeehiveEsp : EspMod(
     override fun onRenderBlockEntity(er: BlockEntityRender) {
         if (er.entity !is BeehiveBlockEntity) return
         val box = Box(er.entity.pos)
-        RenderUtils.drawBox(er.stack, er.buffer, box, espConfig.beehiveColor, espConfig.alpha)
+        RenderUtils.drawBox(er.stack, er.buffer, box, config.beehiveColor, config.alpha)
+    }
+    companion object {
+        private val config: EspConfig
+        get() {
+            return Settings.getConfig<EspConfig>("esp")
+        }
     }
 }
